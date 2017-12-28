@@ -1,0 +1,41 @@
+h1, h3
+{
+    text-align:center;
+}
+h3
+{
+    background-color:black;
+    color:white;
+    font-size:0.9em;
+    margin-bottom:0px;
+}
+
+h4
+{
+ font-size:1.2em;   
+ font-weight: bold;
+}
+
+.news p
+{
+    background-color:#CCCCCC;
+    margin-top:0px;
+}
+.news
+{
+    width:70%;
+    margin:auto;
+}
+
+.comments
+{
+    width:70%;
+    margin:auto;
+}
+
+a
+{
+    text-decoration: none;
+    color: blue;
+    font-style: italic;
+}
