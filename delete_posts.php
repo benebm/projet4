@@ -33,9 +33,9 @@ catch(Exception $e)
 
 <?php
 
+$id_billets = $_GET['billet'];
 if ( isset($_POST['form_upload']) )
 {
-$id_billets = $_GET['billet'];
 $req = $bdd->prepare('DELETE FROM billets WHERE id = :idbillet');
 $req->execute(array(
   'idbillet' => $id_billets
@@ -46,7 +46,7 @@ echo "Votre article a bien été supprimé!"; ?>
 $req->closeCursor();
 }
 else { ?>
-  <a href="read_lastpost.php">Annuler et revenir à l'article</a>
+  <a href="read_post.php?billet=<?php echo $id_billets; ?>">Annuler et revenir à l'article</a>
 <?php }
 
 ?>

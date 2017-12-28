@@ -39,8 +39,14 @@ if (!empty($_POST['title']) && !empty($_POST['content']))
 
     {
        $req->execute(array($_POST['title'], $_POST['content'])); 
-       echo "Votre article a bien été posté!"; ?>
-       <h4><a href="read_lastpost.php">Afficher l'article</a></h4>
+
+       echo "Votre article a bien été posté!"; 
+       $req->closeCursor();
+
+$req2 = $bdd->query('SELECT id FROM billets ORDER BY date_creation DESC');       
+$donnees2 = $req2->fetch();
+       ?>
+       <h4><a href="read_post.php?billet=<?php echo $donnees2['id']; ?>">Afficher l'article</a></h4>
        <h4><a href="create_posts.php">Créer un autre article</a></h4>
 
        <?php 
@@ -49,13 +55,8 @@ else
     { 
     }
 
-$req->closeCursor();
 
 ?>
 
 </body>
 </html>
-
-
-
-

@@ -46,7 +46,7 @@ $req->execute(array(
   'idbillet' => $id_billets
   ));
 echo "Votre article a bien été mis à jour!"; ?>
-<h4><a href="read_lastpost.php">Afficher l'article</a></h4>
+<h4><a href="read_post.php?billet=<?php echo $id_billets; ?>">Afficher l'article</a></h4>
 <?php
 $req->closeCursor();
 }
