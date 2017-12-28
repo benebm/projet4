@@ -8,7 +8,6 @@
         
     <body class="admin">
         <h1>Bienvenue dans votre espace d'administration</h1>
-        <!--<p class="news"><a href="index.php">Retour à la liste des billets</a></p>-->
  
 <?php
 // Connexion à la base de données
@@ -25,8 +24,8 @@ catch(Exception $e)
 
 <form method="post">
         <p>
-        <label for="titre">Titre de l&rsquo;article</label> : <br /><input type="text" name="title" id="title" style="width:1000px;" /><br />
-        <label for="contenu">Contenu de l&rsquo;article</label> :  <br /><textarea name="content" id="content" rows="15" cols="125"></textarea><br />
+        <label for="title">Titre de l&rsquo;article</label> : <br /><input type="text" name="title" id="title" style="width:1000px;" /><br />
+        <label for="content">Contenu de l&rsquo;article</label> :  <br /><textarea name="content" id="content" rows="15" cols="125"></textarea><br />
         
         <input type="submit" value="Valider" />
     </p>
@@ -41,7 +40,7 @@ if (!empty($_POST['title']) && !empty($_POST['content']))
     {
        $req->execute(array($_POST['title'], $_POST['content'])); 
        echo "Votre article a bien été posté!"; ?>
-       <h4><a href="index.php">Afficher l'article</a></h4>
+       <h4><a href="read_lastpost.php">Afficher l'article</a></h4>
        <h4><a href="create_posts.php">Créer un autre article</a></h4>
 
        <?php 
@@ -51,15 +50,8 @@ else
     }
 
 $req->closeCursor();
+
 ?>
-
-
-    
-<!--lien prévisualiser vers index-->
-
-<!--lien modifier vers page modifier-->
-<!--lien supprimer vers page supprimer-->
-
 
 </body>
 </html>

@@ -8,7 +8,7 @@
         
     <body>
         <h1>Mon super blog !</h1>
-        <p class="news"><a href="index.php">Retour à la liste des billets</a></p>
+        <p class="news"><a href="index.php">Voir la liste des dix derniers billets</a></p>
  
 <?php
 // Connexion à la base de données

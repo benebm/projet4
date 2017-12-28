@@ -39,3 +39,17 @@ a
     color: blue;
     font-style: italic;
 }
+
+.admin a 
+{
+    font-style: normal;
+    color : 000000;
+}
+
+.admin
+{
+    background-color: #EFEFEF;
+    text-align:center;
+    width:100%;
+    margin:auto;
+}
