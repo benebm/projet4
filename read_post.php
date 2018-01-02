@@ -36,7 +36,7 @@ $donnees = $req->fetch();
     
     <p>
     <?php
-    echo nl2br(htmlspecialchars($donnees['contenu']));
+    echo nl2br($donnees['contenu']);
     ?>
     </p>
 </div>
