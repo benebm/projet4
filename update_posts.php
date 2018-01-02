@@ -22,14 +22,28 @@ catch(Exception $e)
 ?>
 <h4>Modifier votre article</h4>
 
+
+<?php // Récupération du billet
+$req = $bdd->prepare('SELECT titre, contenu, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr FROM billets WHERE id = ?');
+$req->execute(array($_GET['billet']));
+$donnees = $req->fetch();
+?>
+
 <form method="post">
         <p>
-        <label for="updatedtitle">Nouveau titre de l&rsquo;article</label> : <br /><input type="text" name="updatedtitle" id="updatedtitle" style="width:1000px;" /><br />
-        <label for="updatedcontent">Nouveau contenu de l&rsquo;article</label> :  <br /><textarea name="updatedcontent" id="updatedcontent" rows="15" cols="125"></textarea><br />
+        <label for="updatedtitle">Nouveau titre de l&rsquo;article</label> : <br /><input type="text" name="updatedtitle" id="updatedtitle" style="width:1000px;" value="<?php echo htmlspecialchars($donnees['titre']); ?>" /><br />
+        <label for="updatedcontent">Nouveau contenu de l&rsquo;article</label> :  <br /><textarea name="updatedcontent" id="updatedcontent" rows="15" cols="125"><?php
+    echo (htmlspecialchars($donnees['contenu']));
+    ?></textarea><br />
         
         <input type="submit" value="Valider" />
     </p>
     </form>
+
+<?php
+$req->closeCursor(); // Important : on libère le curseur pour la prochaine requête
+?>
+
 
 <?php
 

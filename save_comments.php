@@ -12,7 +12,7 @@ catch(Exception $e)
 
 
 // Insertion du message à l'aide d'une requête préparée
-$req = $bdd->prepare('INSERT INTO commentaires (id_billet, auteur, commentaire, date_commentaire) VALUES(?, ?, ?, NOW())');
+$req = $bdd->prepare('INSERT INTO commentaires (id_billet, auteur, commentaire, date_commentaire, OKmodo) VALUES(?, ?, ?, NOW(), NULL)');
 $req->execute(array($_GET['billet'], $_POST['pseudo'], $_POST['message']));
 $req->closeCursor();
 

@@ -40,6 +40,10 @@ $donnees = $req->fetch();
     </p>
 </div>
 
+<?php
+$req->closeCursor(); // Important : on libère le curseur pour la prochaine requête
+?>
+
 <div class = "comments">
 <h2>Commentaires</h2>
 
@@ -57,10 +61,8 @@ $donnees = $req->fetch();
 <h4>Commentaires récents</h4>
 
 <?php
-$req->closeCursor(); // Important : on libère le curseur pour la prochaine requête
-
-// Récupération des commentaires
-$req = $bdd->prepare('SELECT auteur, commentaire, DATE_FORMAT(date_commentaire, \'%d/%m/%Y à %Hh%imin%ss\') AS date_commentaire_fr FROM commentaires WHERE id_billet = ? ORDER BY date_commentaire DESC');
+$billet = $_GET['billet'];
+$req = $bdd->prepare('SELECT id, auteur, commentaire, DATE_FORMAT(date_commentaire, \'%d/%m/%Y à %Hh%imin%ss\') AS date_commentaire_fr FROM commentaires WHERE id_billet = ? AND OKmodo = "approved" ORDER BY date_commentaire DESC');
 $req->execute(array($_GET['billet']));
 
 while ($donnees = $req->fetch())
@@ -68,10 +70,21 @@ while ($donnees = $req->fetch())
 ?>
 <p><strong><?php echo htmlspecialchars($donnees['auteur']); ?></strong> le <?php echo $donnees['date_commentaire_fr']; ?></p>
 <p><?php echo nl2br(htmlspecialchars($donnees['commentaire'])); ?></p>
+
+<!--supprimer après cette ligne-->
+<!--lien signaler qui appelle la page permettant de signaler (page invisible) avec l'id du commentaire (commentaire aura disparu)-->
+
+<p>
+<a href="report_comment.php?id_comment=<?php echo $donnees['id'] . "&billet=" . $billet ; ?>">Signaler le commentaire ?</a>
+ </p>
+
 <?php
 } // Fin de la boucle des commentaires
 $req->closeCursor();
 ?>
+
 </div>
 </body>
 </html>
+
+<input type="hidden" name="billet" value="<?php echo $donnees['id']; ?>">
