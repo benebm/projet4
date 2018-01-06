@@ -14,6 +14,8 @@
             <h5><?= htmlspecialchars($post['titre']); ?><em>le <?= $post['date_creation_fr']; ?></em></h5>
             <p><?= nl2br(htmlspecialchars($post['contenu']));?></p>
         </div>
+        <h4><a href="index.php?action=update&id=<?= $post['id'] ?>">Mettre à jour l'article</a></h4>
+        <h4><a href="index.php?action=delete&id=<?= $post['id'] ?>">Supprimer l'article</a></h4>
           
     </body>
 </html>

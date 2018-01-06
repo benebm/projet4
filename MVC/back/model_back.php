@@ -7,7 +7,7 @@ function getAllPosts ()
 	return $req;
 }
 
-function saveAPost ($title, $content)
+function savePost ($title, $content)
 {
     $db = dbConnect();
     $req = $db->prepare('INSERT INTO billets (titre, contenu, date_creation) VALUES(?, ?, NOW())');
@@ -33,6 +33,25 @@ function getPost ($postId)
 	return $post;
 }
 
+function updatePost ($postId, $title, $content)
+{
+	$db = dbConnect();
+	$req = $db->prepare('UPDATE billets SET titre = :title, contenu = :content WHERE id = :postId');
+	$updatedLines = $req->execute(array(
+		'title' => $title,
+		'content' => $content,
+		'postId' => $postId));
+	return $updatedLines;
+}
+
+function deletePost ($postId)
+{
+	$db = dbConnect();
+	$req = $db->prepare('DELETE FROM billets WHERE id = :postId');
+	$req->execute(array(
+		'postId' => $postId));
+}
+
 function dbConnect ()
 {
 	try
@@ -45,3 +64,7 @@ function dbConnect ()
 	   	die('Erreur : '.$e->getMessage());
 	}
 }
+
+
+
+
