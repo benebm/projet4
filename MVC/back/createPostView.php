@@ -10,7 +10,7 @@
         <h1>Bienvenue dans votre espace d'administration</h1>
         <h4>Ecrire un nouvel article</h4>
 
-          <form method="post" action="index.php?action=addapost">
+          <form method="post" action="index.php?action=addpost">
             <p> 
             <label for="title">Titre de l&rsquo;article</label> : <br /><input type="text" name="title" id="title" style="width:1000px;" /><br />
             <label for="content">Contenu de l&rsquo;article</label> :  <br /><textarea name="content" id="content" rows="15" cols="125"></textarea><br />

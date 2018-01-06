@@ -16,9 +16,9 @@ function showCreatePostForm ()
 }
 
 
-function addAPost ($title, $content)
+function addPost ($title, $content)
 {
-    $affectedLines = saveAPost($title, $content);
+    $affectedLines = savePost($title, $content);
     $postId = getNewPostID ();
 
     if ($affectedLines === false) {
@@ -27,14 +27,42 @@ function addAPost ($title, $content)
     else {
         header('Location: index.php?action=readpost&id=' . $postId['id']);
     }
+    
 }
 
-/*function showNewPostID ()
-
+function showUpdatePostForm ()
 {
-	$postId = getNewPostID ();
+	$post = getPost($_GET['id']);
 
-}*/
+	require('updatePostView.php');
+}
+
+
+function managePost ($postId, $title, $content)
+{
+	 $updatedLines = updatePost($_GET['id'], $title, $content);
+
+	 if ($updatedLines === false) {
+         throw new Exception('Impossible de mettre à jour le post !');
+    }
+    else {
+        header('Location: index.php?action=readpost&id=' . $postId);
+    }
+
+}
+
+function showDeleteForm ($postId)
+{
+	require('deletePostView.php');
+}
+
+function clearPost ()
+{
+	deletePost ($_GET['id']);
+	require ('deletePostView.php');
+	echo "Votre article a bien été supprimé";
+}
+
 
 function post()
 {
@@ -42,3 +70,9 @@ function post()
 
     require('readPostView.php');
 }
+
+
+
+
+
+

@@ -22,8 +22,10 @@
                 </h3>
                 <p>
                 <?= nl2br($data['contenu']) ?>
-                <br />
                 </p>
+                <a href="index.php?action=update&id=<?= $data['id'] ?>">Mettre à jour l'article</a> |  
+                <a href="index.php?action=delete&id=<?= $data['id'] ?>">Supprimer l'article</a><br /><br />
+                
             </div>
         <?php
         }
