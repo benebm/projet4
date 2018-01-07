@@ -35,18 +35,42 @@ try {
         }
 
         else if ($_GET['action'] == 'delete' && isset($_GET['id']))
-            if (!isset($_POST['form_upload']))
         {
-            showDeleteForm ($_GET['id']);
+                if (!isset($_POST['form_upload']))
+            {
+                showDeleteForm ($_GET['id']);
+            }
+                else if (isset($_POST['form_upload']))
+            {
+                clearPost ();
+            }
         }
-            else if (isset($_POST['form_upload']))
+
+        else if ($_GET['action'] == 'moderate')
         {
-            clearPost ();
+            if (!isset($_GET['id']))
+            {
+                showPendingComments ();
+            }
+            else if (isset($_GET['id']))
+            {
+                if ($_POST['OKmodo'] == 'approved')
+                {
+                    validateComment ($_GET['id']);
+                }
+                else if ($_POST['OKmodo'] == 'denied')
+                {
+                    invalidateComment ($_GET['id']);
+                }
+
+            }
+
         }
 
 
-
+  
     }
+
 
 
     else

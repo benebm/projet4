@@ -52,6 +52,32 @@ function deletePost ($postId)
 		'postId' => $postId));
 }
 
+
+function getPendingComments ()
+{
+	$db = dbConnect();
+	$req = $db->query('SELECT id, auteur, commentaire, DATE_FORMAT(date_commentaire, \'%d/%m/%Y à %Hh%imin%ss\') AS date_commentaire_fr FROM commentaires WHERE OKmodo IS NULL ORDER BY date_commentaire');
+	return $req;
+}
+
+
+function approveComment($commentId)
+{
+	$db = dbConnect();
+	$req = $db->prepare('UPDATE commentaires SET OKmodo = "approved" WHERE id = :commentId');
+	$commentApproved = $req->execute(array(
+	'commentId' => $commentId));
+}
+
+function denyComment($commentId)
+{
+	$db = dbConnect();
+	$req = $db->prepare('UPDATE commentaires SET OKmodo = "denied" WHERE id = :commentId');
+	$commentDenied = $req->execute(array(
+	'commentId' => $commentId));
+}
+
+
 function dbConnect ()
 {
 	try

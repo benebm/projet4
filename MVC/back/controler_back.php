@@ -71,6 +71,24 @@ function post()
     require('readPostView.php');
 }
 
+function showPendingComments ()
+{
+    $comments = getPendingComments ();
+    require('moderateCommentsView.php');
+}
+
+function validateComment ($commentId)
+{
+	approveComment($commentId);
+	header('Location: index.php?action=moderate');
+}
+
+function invalidateComment ($commentId)
+{
+	denyComment($commentId);
+	header('Location: index.php?action=moderate');
+}
+
 
 
 
