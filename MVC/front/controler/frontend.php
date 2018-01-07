@@ -30,6 +30,13 @@ function addComment ($postId, $author, $comment)
     }
 }
 
+function reportComment ($commentId, $id)
+{
+    resetComment ($_GET['commentId']);
+    post($_GET['id']);
+    
+}
+
 
 
 

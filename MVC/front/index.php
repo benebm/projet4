@@ -28,6 +28,10 @@ try {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
+        elseif ($_GET['action'] == 'report' && isset($_GET['commentId']))
+        {
+            reportComment($_GET['commentId'], $_GET['id']);
+        }
 
     }
     else {
