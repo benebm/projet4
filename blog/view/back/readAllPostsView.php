@@ -17,11 +17,11 @@
           ?>
             <div class="news">
                 <h3>
-                <?= $data['titre'] ?>
-                <em>le <?= $data['date_creation_fr'] ?></em>
+                <?= $data['title'] ?>
+                <em>le <?= $data['creation_date_fr'] ?></em>
                 </h3>
                 <p>
-                <?= nl2br($data['contenu']) ?>
+                <?= nl2br($data['content']) ?>
                 </p>
                 <a href="index.php?action=update&id=<?= $data['id'] ?>">Mettre à jour l'article</a> |  
                 <a href="index.php?action=delete&id=<?= $data['id'] ?>">Supprimer l'article</a><br /><br />

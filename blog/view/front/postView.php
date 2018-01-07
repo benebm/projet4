@@ -5,12 +5,12 @@
 
 <div class="news">
     <h3>
-        <?= htmlspecialchars($post['titre']); ?>
-        <em>le <?= $post['date_creation_fr']; ?></em>
+        <?= htmlspecialchars($post['title']); ?>
+        <em>le <?= $post['creation_date_fr']; ?></em>
     </h3>
     
     <p>
-    <?= nl2br(htmlspecialchars($post['contenu']));
+    <?= nl2br(htmlspecialchars($post['content']));
     ?>
     </p>
 </div>
@@ -39,8 +39,8 @@
 while ($comment = $comments->fetch())
 {
 ?>
-<p><strong><?= htmlspecialchars($comment['auteur']); ?></strong> le <?= $comment['date_commentaire_fr']; ?></p>
-<p><?= nl2br(htmlspecialchars($comment['commentaire'])); ?></p>
+<p><strong><?= htmlspecialchars($comment['author']); ?></strong> le <?= $comment['comment_date_fr']; ?></p>
+<p><?= nl2br(htmlspecialchars($comment['comment'])); ?></p>
 <p>
 <a href="index.php?action=report&commentId=<?= $comment['id'] . "&id=" . $post['id'] ; ?>">Signaler le commentaire ?</a>
  </p>

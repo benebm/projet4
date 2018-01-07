@@ -10,13 +10,13 @@ function showAllPosts()
     $postManager = new PostManager(); // Création d'un objet
     $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
 
-    require('view/readAllPostsView.php');
+    require('../view/back/readAllPostsView.php');
 }
 
 
 function showCreatePostForm ()
 {
-	require('view/createPostView.php');
+	require('../view/back/createPostView.php');
 }
 
 
@@ -39,7 +39,7 @@ function showUpdatePostForm ()
 	$postManager = new PostManager(); 
     $post = $postManager->getPost($_GET['id']);
 
-	require('view/updatePostView.php');
+	require('../view/back/updatePostView.php');
 }
 
 
@@ -59,7 +59,7 @@ function managePost ($postId, $title, $content)
 
 function showDeleteForm ($postId)
 {
-	require('view/deletePostView.php');
+	require('../view/back/deletePostView.php');
 }
 
 function clearPost ()
@@ -67,7 +67,7 @@ function clearPost ()
     $postManager = new PostManager(); 
 	$postManager->deletePost ($_GET['id']);
 
-	require ('view/deletePostView.php');
+	require ('../view/back/deletePostView.php');
 	echo "Votre article a bien été supprimé";
 }
 
@@ -77,7 +77,7 @@ function post()
     $postManager = new PostManager(); 
     $post = $postManager->getPost($_GET['id']);
 
-    require('view/readPostView.php');
+    require('../view/back/readPostView.php');
 }
 
 function showPendingComments ()
@@ -85,7 +85,7 @@ function showPendingComments ()
     $commentManager = new CommentManager();
     $comments = $commentManager->getPendingComments ();
 
-    require('view/moderateCommentsView.php');
+    require('../view/back/moderateCommentsView.php');
 }
 
 function validateComment ($commentId)

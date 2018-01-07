@@ -11,8 +11,8 @@
  
         <h4>Voici votre nouvel article :</h4>
         <div class="news">
-            <h5><?= htmlspecialchars($post['titre']); ?><em>le <?= $post['date_creation_fr']; ?></em></h5>
-            <p><?= nl2br(htmlspecialchars($post['contenu']));?></p>
+            <h5><?= htmlspecialchars($post['title']); ?><em>le <?= $post['creation_date_fr']; ?></em></h5>
+            <p><?= nl2br(htmlspecialchars($post['content']));?></p>
         </div>
         <h4><a href="index.php?action=update&id=<?= $post['id'] ?>">Mettre à jour l'article</a></h4>
         <h4><a href="index.php?action=delete&id=<?= $post['id'] ?>">Supprimer l'article</a></h4>

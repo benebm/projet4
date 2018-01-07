@@ -1,6 +1,6 @@
 <?php
 
-require_once("../model/Manager.php"); 
+require_once("Manager.php"); 
 
 class PostManager extends Manager
 {
@@ -8,7 +8,7 @@ class PostManager extends Manager
     public function getPosts ()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, titre, contenu, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr FROM billets ORDER BY date_creation DESC');
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date DESC');
         return $req;
     }
 
@@ -16,7 +16,7 @@ class PostManager extends Manager
     public function getPost ($postId)
     {   
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, titre, contenu, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr FROM billets WHERE id = ?');
+        $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');
         $req->execute(array($postId));
         $post = $req->fetch();
         return $post;
@@ -25,7 +25,7 @@ class PostManager extends Manager
     public function savePost ($title, $content)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO billets (titre, contenu, date_creation) VALUES(?, ?, NOW())');
+        $req = $db->prepare('INSERT INTO posts (title, content, creation_date) VALUES(?, ?, NOW())');
         $affectedLines = $req->execute(array($title, $content));
         return $affectedLines;
     }
@@ -33,7 +33,7 @@ class PostManager extends Manager
     public function getNewPostID ()
     {
         $db = $this->dbConnect();
-        $req2 = $db->query('SELECT id FROM billets ORDER BY date_creation DESC');       
+        $req2 = $db->query('SELECT id FROM posts ORDER BY creation_date DESC');       
         $postId = $req2->fetch();
         return $postId;
     }
@@ -41,7 +41,7 @@ class PostManager extends Manager
     public function updatePost ($postId, $title, $content)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE billets SET titre = :title, contenu = :content WHERE id = :postId');
+        $req = $db->prepare('UPDATE posts SET title = :title, content = :content WHERE id = :postId');
         $updatedLines = $req->execute(array(
             'title' => $title,
             'content' => $content,
@@ -52,7 +52,7 @@ class PostManager extends Manager
     public function deletePost ($postId)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('DELETE FROM billets WHERE id = :postId');
+        $req = $db->prepare('DELETE FROM posts WHERE id = :postId');
         $req->execute(array(
             'postId' => $postId));
     }

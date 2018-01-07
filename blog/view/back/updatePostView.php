@@ -12,8 +12,8 @@
 
           <form method="post" action="index.php?action=saveupdate&id=<?= $post['id'] ?>">
             <p> 
-            <label for="title">Nouveau titre de l&rsquo;article</label> : <br /><input type="text" name="title" id="title" style="width:1000px;" value="<?= $post['titre'] ?>" /><br />
-            <label for="content">Nouveau contenu de l&rsquo;article</label> :  <br /><textarea name="content" id="content" rows="15" cols="125"><?= $post['contenu'] ?></textarea><br />
+            <label for="title">Nouveau titre de l&rsquo;article</label> : <br /><input type="text" name="title" id="title" style="width:1000px;" value="<?= $post['title'] ?>" /><br />
+            <label for="content">Nouveau contenu de l&rsquo;article</label> :  <br /><textarea name="content" id="content" rows="15" cols="125"><?= $post['content'] ?></textarea><br />
             <input type="submit" value="Valider" />
             </p>
           </form>

@@ -16,17 +16,17 @@
           ?>
             <div class="news">
                 <h3>
-                <?= $data['auteur'] ?>
-                <em>le <?= $data['date_commentaire_fr'] ?></em>
+                <?= $data['author'] ?>
+                <em>le <?= $data['comment_date_fr'] ?></em>
                 </h3>
                 <p>
-                <?= nl2br($data['commentaire']) ?>
+                <?= nl2br($data['comment']) ?>
                 </p>             
             </div>
             <p><form method="post" action="index.php?action=moderate&id=<?= $data['id']; ?>">
             Autoriser la publication du commentaire ?
-            <input type="radio" name="OKmodo" value="approved" id="oui" /> <label for="oui">Approuver</label>
-            <input type="radio" name="OKmodo" value="denied" id="non" /> <label for="non">Refuser</label>
+            <input type="radio" name="comment_status" value="approved" id="oui" /> <label for="oui">Approuver</label>
+            <input type="radio" name="comment_status" value="denied" id="non" /> <label for="non">Refuser</label>
             <input type="submit" value="Valider" />
             </p>
 

@@ -1,5 +1,5 @@
 <?php
-require('controler/controler_back.php');
+require('../controler/back.php');
 
 try {
 
@@ -54,11 +54,11 @@ try {
             }
             else if (isset($_GET['id']))
             {
-                if ($_POST['OKmodo'] == 'approved')
+                if ($_POST['comment_status'] == 'approved')
                 {
                     validateComment ($_GET['id']);
                 }
-                else if ($_POST['OKmodo'] == 'denied')
+                else if ($_POST['comment_status'] == 'denied')
                 {
                     invalidateComment ($_GET['id']);
                 }
@@ -86,5 +86,5 @@ try {
 catch(Exception $e) { 
     //echo 'Erreur : ' . $e->getMessage();
     $errorMessage = $e->getMessage();
-    require('view/errorView.php');    
+    require('view/back/errorView.php');    
 }
