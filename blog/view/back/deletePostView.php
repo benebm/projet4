@@ -1,23 +1,20 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Admin blog</title>
-	<link href="style.css" rel="stylesheet" /> 
-    </head>
-        
-    <body class="admin">
-        <h1>Espace d'administration</h1>
-        <h4>Supprimer votre article</h4>
-        <h3>Attention, si vous validez la suppression, votre article sera définitivement supprimé</h3>
-          <form method="post">
-            <input type="hidden" name="form_upload" />
-            <p>Supprimer l'article ? <input type="submit" value="Valider" /></p>
-          </form>
-        <h4><a href="index.php">Revenir à la liste des articles</a></h4>
-    </body>
-</html>
+<?php $header = '<a href="index.php">Articles</a> / Supprimer votre article'; ?>
 
+<?php ob_start(); ?>
+      <h1>Supprimer votre article</h1>
+      <hr>
+      <div class="text-center">
+        <h4>Attention, si vous validez la suppression, votre article sera définitivement supprimé</h4>
+         <h4>SUPPRIMER L'ARTICLE ?</h4><br />
+        <form method="post"><input type="hidden" name="form_upload" />
+          <input class="btn btn-primary btn-block" type="submit" value="Valider" />
+        </form>
+        <div class="text-center">
+          <br /><a href="index.php"><i class="fa fa-arrow-left"></i> Revenir à la liste des articles</a> 
+        </div>
+      </div>
+<?php $content = ob_get_clean(); ?>
+<?php require('templateBackBlog.php'); ?>
 
 
 
