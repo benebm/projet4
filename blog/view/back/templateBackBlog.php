@@ -59,7 +59,7 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="index.php">Liste des articles</a>
+              <a href="index.php?action=readall">Liste des articles</a>
             </li>
             <li>
               <a href="index.php?action=create">Ecrire un article</a>
@@ -87,7 +87,7 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" href="../index.php">
+          <a class="nav-link" href="../index.php">
             <i class="fa fa-fw fa-sign-out"></i>Voir le blog</a>
         </li>
       </ul>

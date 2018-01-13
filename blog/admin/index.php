@@ -2,49 +2,74 @@
 require('../controler/back.php');
 
 try {
-
     if (isset($_GET['action']))
     {
-        if ($_GET['action'] == 'create' ) 
+        if ($_GET['action'] == 'readall') 
+            {           
+                showAllPosts();            
+            }
+               
+        else if ($_GET['action'] == 'create') 
             {           
                 showCreatePostForm ();            
             }
 
-
         else if ($_GET['action'] == 'addpost' )
-        {    
-           addPost ($_POST['title'], $_POST['subtitle'], $_POST['content']);
+            if (!empty($_POST['title']) && !empty($_POST['subtitle']) && !empty($_POST['content'])) 
+            {
+                addPost ($_POST['title'], $_POST['subtitle'], $_POST['content']);
+            }
+             else
+            {    
+                throw new Exception('Tous les champs ne sont pas remplis !');
+            }
 
-        }
+        else if ($_GET['action'] == 'readpost') 
+            if (isset($_GET['id']) && ($_GET['id'] > 0))
+            {
+                post();
+            }
+            else
+            {
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
 
+        else if ($_GET['action'] == 'update')
+            if (isset($_GET['id']) && ($_GET['id'] > 0))
+            {
+                showUpdatePostForm ();
+            }
+            else
+            {
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
 
-        else if ($_GET['action'] == 'readpost' && isset($_GET['id'])) 
-        {
-            post();
-        }
+        else if ($_GET['action'] == 'saveupdate')
+            if (isset($_GET['id']) && ($_GET['id'] > 0) && (!empty($_POST['title']) && !empty($_POST['subtitle']) && !empty($_POST['content'])))
+            {
+                managePost ($_GET['id'], $_POST['title'], $_POST['subtitle'], $_POST['content']);
+            }
+            else
+            {
+                throw new Exception('Il manque l\'identifiant du billet ou bien tous les champs ne sont pas remplis');
+            }
 
-        else if ($_GET['action'] == 'update' && isset($_GET['id']))
-        {
-            showUpdatePostForm ();
-        }
-
-
-        else if ($_GET['action'] == 'saveupdate' && isset($_GET['id']))
-        {
-            managePost ($_GET['id'], $_POST['title'], $_POST['subtitle'], $_POST['content']);
-        }
-
-        else if ($_GET['action'] == 'delete' && isset($_GET['id']))
-        {
+        else if ($_GET['action'] == 'delete')
+            if (isset($_GET['id']) && ($_GET['id'] > 0))
+            {
                 if (!isset($_POST['form_upload']))
-            {
-                showDeleteForm ($_GET['id']);
-            }
+                {
+                    showDeleteForm ($_GET['id']);
+                }
                 else if (isset($_POST['form_upload']))
-            {
-                clearPost ();
+                {
+                    clearPost ();
+                }
             }
-        }
+            else
+            {
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
 
         else if ($_GET['action'] == 'moderate')
         {
@@ -52,7 +77,7 @@ try {
             {
                 showPendingComments ();
             }
-            else if (isset($_GET['id']))
+            else if (isset($_GET['id']) && ($_GET['id'] > 0) && !empty($_POST['comment_status']))
             {
                 if ($_POST['comment_status'] == 'approved')
                 {
@@ -62,29 +87,23 @@ try {
                 {
                     invalidateComment ($_GET['id']);
                 }
-
             }
-
+            else 
+            {
+                 throw new Exception('Il manque l\'identifiant de billet ou bien la valeur du bouton est vide');
+            }
         }
-
-
   
     }
 
-
-
     else
     {
-        showAllPosts();
+        showCounts ();
     }
-
 }
 
 
-
-
 catch(Exception $e) { 
-    //echo 'Erreur : ' . $e->getMessage();
     $errorMessage = $e->getMessage();
-    require('view/back/errorView.php');    
+    require('../view/back/errorView.php');    
 }

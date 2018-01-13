@@ -8,7 +8,7 @@ class PostManager extends Manager
     public function getPosts ()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, subtitle, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date DESC');
+        $req = $db->query('SELECT id, title, subtitle, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM blog_oc4_posts ORDER BY creation_date DESC');
         return $req;
     }
 
@@ -16,7 +16,7 @@ class PostManager extends Manager
     public function getPost ($postId)
     {   
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, title, subtitle, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');
+        $req = $db->prepare('SELECT id, title, subtitle, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM blog_oc4_posts WHERE id = ?');
         $req->execute(array($postId));
         $post = $req->fetch();
         return $post;
@@ -25,7 +25,7 @@ class PostManager extends Manager
     public function savePost ($title, $subtitle, $content)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO posts (title, subtitle, content, creation_date) VALUES(?, ?, ?, NOW())');
+        $req = $db->prepare('INSERT INTO blog_oc4_posts (title, subtitle, content, creation_date) VALUES(?, ?, ?, NOW())');
         $affectedLines = $req->execute(array($title, $subtitle, $content));
         return $affectedLines;
     }
@@ -33,7 +33,7 @@ class PostManager extends Manager
     public function getNewPostID ()
     {
         $db = $this->dbConnect();
-        $req2 = $db->query('SELECT id FROM posts ORDER BY creation_date DESC');       
+        $req2 = $db->query('SELECT id FROM blog_oc4_posts ORDER BY creation_date DESC');       
         $postId = $req2->fetch();
         return $postId;
     }
@@ -41,7 +41,7 @@ class PostManager extends Manager
     public function updatePost ($postId, $title, $subtitle, $content)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE posts SET title = :title, subtitle = :subtitle, content = :content WHERE id = :postId');
+        $req = $db->prepare('UPDATE blog_oc4_posts SET title = :title, subtitle = :subtitle, content = :content WHERE id = :postId');
         $updatedLines = $req->execute(array(
             'title' => $title,
             'subtitle' => $subtitle,
@@ -53,10 +53,20 @@ class PostManager extends Manager
     public function deletePost ($postId)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('DELETE FROM posts WHERE id = :postId');
+        $req = $db->prepare('DELETE FROM blog_oc4_posts WHERE id = :postId');
         $req->execute(array(
             'postId' => $postId));
     }
+
+
+    public function sumPosts ()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT COUNT(*) AS total_posts FROM blog_oc4_posts'); 
+        $sumPosts = $req->fetch();
+        return $sumPosts;   
+    }
+
 
 }
 

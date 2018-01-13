@@ -67,8 +67,7 @@ function clearPost ()
     $postManager = new PostManager(); 
 	$postManager->deletePost ($_GET['id']);
 
-	require ('../view/back/deletePostView.php');
-	echo "Votre article a bien été supprimé";
+	require ('../view/back/confirmSuppressionView.php');
 }
 
 
@@ -103,5 +102,29 @@ function invalidateComment ($commentId)
     
 	header('Location: index.php?action=moderate');
 }
+
+function showSumPosts ()
+{
+    $postManager = new PostManager(); 
+    $sumPosts = $postManager->sumPosts(); 
+
+    require('../view/back/homeView.php');
+
+}
+
+function showCounts ()
+{
+    $postManager = new PostManager(); 
+    $sumPosts = $postManager->sumPosts(); 
+    $commentManager = new CommentManager();
+    $sumComments = $commentManager->sumPendingComments();
+    $_SESSION['firstname'] = 'Jean';
+
+    require('../view/back/homeView.php');
+
+}
+
+
+
 
 

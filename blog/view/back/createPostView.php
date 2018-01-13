@@ -12,7 +12,7 @@
             <label for="subtitle">Sous-titre de l&rsquo;article</label> : <br /><input class="form-control" type="text" name="subtitle" id="subtitle" />
           </div>
           <div class="form-group">
-            <label for="content">Contenu de l&rsquo;article</label> :  <br /><textarea class="form-control" name="content" id="content" rows="10">Laissez parler votre inspiration, Jean!</textarea>
+            <label for="content">Contenu de l&rsquo;article</label> :  <br /><textarea class="form-control" name="content" id="content" rows="10"></textarea>
           </div>
           <input class="btn btn-primary btn-block" type="submit" value="Valider" />
         </form>
