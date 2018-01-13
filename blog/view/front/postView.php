@@ -1,5 +1,5 @@
 <?php ob_start(); ?>
-<header class="masthead" style="background-image: url('post.jpg')">
+<header class="masthead" style="background-image: url('public_front/img/post.jpg')">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
