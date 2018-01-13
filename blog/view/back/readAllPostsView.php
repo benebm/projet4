@@ -11,12 +11,12 @@
             <div class="card card-login mx-auto mt-5">
                 <div class="card-header">
                     <h4><?= $data['title'] ?></h4>
+                        <h5><?= $data['subtitle'] ?></h5>
                         <p><em>Publié par Jean Forteroche le <?= $data['creation_date_fr'] ?></em></p>
                 </div>
                 <div class="card-body">
                     <div class="text-center mt-4 mb-5">
-                        
-                        <p><?= nl2br($data['content']) ?></p>
+                      <p><?= $data['content'] ?></p>
                     </div>
                     <div class="text-center">
                         <a href="index.php?action=update&id=<?= $data['id'] ?>"><i class="fa fa-refresh"></i> Mettre à jour l'article</a> &nbsp;|&nbsp;

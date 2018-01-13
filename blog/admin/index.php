@@ -13,7 +13,7 @@ try {
 
         else if ($_GET['action'] == 'addpost' )
         {    
-           addPost ($_POST['title'], $_POST['content']);
+           addPost ($_POST['title'], $_POST['subtitle'], $_POST['content']);
 
         }
 
@@ -31,7 +31,7 @@ try {
 
         else if ($_GET['action'] == 'saveupdate' && isset($_GET['id']))
         {
-            managePost ($_GET['id'], $_POST['title'], $_POST['content']);
+            managePost ($_GET['id'], $_POST['title'], $_POST['subtitle'], $_POST['content']);
         }
 
         else if ($_GET['action'] == 'delete' && isset($_GET['id']))

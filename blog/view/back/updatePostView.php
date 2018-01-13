@@ -9,6 +9,9 @@
             <label for="title">Nouveau titre de l&rsquo;article</label> : <br /><input class="form-control" type="text" name="title" id="title" value="<?= $post['title'] ?>" />
           </div>
           <div class="form-group">
+            <label for="subtitle">Nouveau sous-titre de l&rsquo;article</label> : <br /><input class="form-control" type="text" name="subtitle" id="subtitle" value="<?= $post['subtitle'] ?>" />
+          </div>
+          <div class="form-group">
             <label for="content">Nouveau contenu de l&rsquo;article</label> :  <br /><textarea class="form-control" name="content" id="content" rows="10"><?= $post['content'] ?></textarea>
           </div>
           <input class="btn btn-primary btn-block" type="submit" value="Valider" />

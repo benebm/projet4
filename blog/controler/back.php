@@ -20,10 +20,10 @@ function showCreatePostForm ()
 }
 
 
-function addPost ($title, $content)
+function addPost ($title, $subtitle, $content)
 {
     $postManager = new PostManager();
-    $affectedLines = $postManager->savePost($title, $content);
+    $affectedLines = $postManager->savePost($title, $subtitle, $content);
     $postId = $postManager->getNewPostID ();
 
     if ($affectedLines === false) {
@@ -43,10 +43,10 @@ function showUpdatePostForm ()
 }
 
 
-function managePost ($postId, $title, $content)
+function managePost ($postId, $title, $subtitle, $content)
 {
 	 $postManager = new PostManager(); 
-     $updatedLines = $postManager->updatePost($_GET['id'], $title, $content);
+     $updatedLines = $postManager->updatePost($_GET['id'], $title, $subtitle, $content);
 
 	 if ($updatedLines === false) {
          throw new Exception('Impossible de mettre à jour le post !');

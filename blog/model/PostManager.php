@@ -8,7 +8,7 @@ class PostManager extends Manager
     public function getPosts ()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date DESC');
+        $req = $db->query('SELECT id, title, subtitle, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date DESC');
         return $req;
     }
 
@@ -16,17 +16,17 @@ class PostManager extends Manager
     public function getPost ($postId)
     {   
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');
+        $req = $db->prepare('SELECT id, title, subtitle, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');
         $req->execute(array($postId));
         $post = $req->fetch();
         return $post;
     }
 
-    public function savePost ($title, $content)
+    public function savePost ($title, $subtitle, $content)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO posts (title, content, creation_date) VALUES(?, ?, NOW())');
-        $affectedLines = $req->execute(array($title, $content));
+        $req = $db->prepare('INSERT INTO posts (title, subtitle, content, creation_date) VALUES(?, ?, ?, NOW())');
+        $affectedLines = $req->execute(array($title, $subtitle, $content));
         return $affectedLines;
     }
 
@@ -38,12 +38,13 @@ class PostManager extends Manager
         return $postId;
     }
 
-    public function updatePost ($postId, $title, $content)
+    public function updatePost ($postId, $title, $subtitle, $content)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE posts SET title = :title, content = :content WHERE id = :postId');
+        $req = $db->prepare('UPDATE posts SET title = :title, subtitle = :subtitle, content = :content WHERE id = :postId');
         $updatedLines = $req->execute(array(
             'title' => $title,
+            'subtitle' => $subtitle,
             'content' => $content,
             'postId' => $postId));
         return $updatedLines;
@@ -56,8 +57,6 @@ class PostManager extends Manager
         $req->execute(array(
             'postId' => $postId));
     }
-
-
 
 }
 

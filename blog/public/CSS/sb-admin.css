@@ -332,6 +332,10 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
   font-weight: bold;
 
 }
+.card-login h5 {
+  text-align: center;
+}
+
 .card-login p {
   text-align: center;
 }
@@ -341,7 +345,6 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
   margin : auto;
   max-width: 250px;
 }
-
 
 /*end of my personal touch */
 
