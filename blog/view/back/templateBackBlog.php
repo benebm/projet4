@@ -3,20 +3,22 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Administration du blog</title>
   <!-- Bootstrap core CSS-->
-  <link href="../public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../public_back/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
-  <link href="../public/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="../public_back/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template-->
-  <link href="../public/css/sb-admin.css" rel="stylesheet">
+  <link href="../public_back/css/sb-admin.css" rel="stylesheet">
 
   <!--this is tinymce-->
-  <script type="text/javascript" src="../public/js/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
+  <script type="text/javascript" src="../public_back/js/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
   <script type="text/javascript">
   tinyMCE.init({
     mode : "textareas",
@@ -117,12 +119,12 @@
       <i class="fa fa-angle-up"></i>
     </a>
     <!-- Bootstrap core JavaScript-->
-    <script src="../public/vendor/jquery/jquery.min.js"></script>
-    <script src="../public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../public_back/vendor/jquery/jquery.min.js"></script>
+    <script src="../public_back/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
-    <script src="../public/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../public_back/vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Custom scripts for all pages-->
-    <script src="../public/js/sb-admin.min.js"></script>
+    <script src="../public_back/js/sb-admin.min.js"></script>
   </div>
 </body>
 
