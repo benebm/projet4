@@ -14,6 +14,27 @@
   <link href="../public/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template-->
   <link href="../public/css/sb-admin.css" rel="stylesheet">
+
+  <!--this is tinymce-->
+  <script type="text/javascript" src="../public/js/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
+  <script type="text/javascript">
+  tinyMCE.init({
+    mode : "textareas",
+    theme : "advanced",
+    plugins : "emotions,spellchecker,advhr,insertdatetime,preview",
+
+    // Theme options - button# indicated the row# only
+    theme_advanced_buttons1 : "newdocument,|,bold,italic,underline,|,justifyleft,justifycenter,justifyright,fontselect,fontsizeselect,formatselect",
+    theme_advanced_buttons2 : "cut,copy,paste,|,bullist,numlist,|,outdent,indent,|,undo,redo,|,link,unlink,anchor,image,|,code,preview,|,forecolor,backcolor",
+    theme_advanced_buttons3 : "insertdate,inserttime,|,spellchecker,advhr,,removeformat,|,sub,sup,|,charmap,emotions",
+    theme_advanced_toolbar_location : "top",
+    theme_advanced_toolbar_align : "left",
+    theme_advanced_statusbar_location : "bottom",
+      theme_advanced_resizing : true
+    });
+</script>
+<!--end of tinymce-->
+
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -66,7 +87,7 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+          <a class="nav-link" data-toggle="modal" href="../index.php">
             <i class="fa fa-fw fa-sign-out"></i>Voir le blog</a>
         </li>
       </ul>
