@@ -19,7 +19,7 @@
         <div class="col-lg-8 col-md-10 mx-auto">
           <h4>Hum, c'est embarrassant</h4>
           <p>Nous n'avons pas trouvé la page que vous recherchez. <br />
-          Il doit y avoir une erreur quelque part dans votre requête... <i class="fa fa-smile-o"></i></p> 
+           Cause de l'erreur : <?= $errorMessage ?> <i class="fa fa-smile-o"></i></p> 
           <hr>
         </div>
       </div>

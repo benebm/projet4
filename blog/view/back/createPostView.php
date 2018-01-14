@@ -1,4 +1,4 @@
-<?php $header = '<a href="index.php">Articles</a> / Créer un article'; ?>
+<?php $header = '<a href="index.php?action=readall">Articles</a> / Créer un article'; ?>
 
 <?php ob_start(); ?>
       <h1>Ecrire un nouvel article</h1>
@@ -17,7 +17,7 @@
           <input class="btn btn-primary btn-block" type="submit" value="Valider" />
         </form>
         <div class="text-center">
-          <br /><a href="index.php"><i class="fa fa-arrow-left"></i> Revenir à la liste des articles</a>
+          <br /><a href="index.php?action=readall"><i class="fa fa-arrow-left"></i> Revenir à la liste des articles</a>
         </div>
       </div>
 <?php $content = ob_get_clean(); ?>

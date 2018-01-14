@@ -1,4 +1,4 @@
-<?php $header = '<a href="index.php">Articles</a> / Mettre à jour votre article'; ?>
+<?php $header = '<a href="index.php?action=readall">Articles</a> / Mettre à jour votre article'; ?>
 
 <?php ob_start(); ?>
       <h1>Modifier le contenu de votre article</h1>
@@ -17,8 +17,8 @@
           <input class="btn btn-primary btn-block" type="submit" value="Valider" />
         </form>
         <div class="text-center">
-          <br /><a href="index.php"><i class="fa fa-arrow-left"></i> Revenir à la liste des articles</a> &nbsp; | &nbsp;
-          <a href="index.php?delete"><i class="fa fa-trash o"></i> Supprimer cet article</a>
+          <br /><a href="index.php?action=readall"><i class="fa fa-arrow-left"></i> Revenir à la liste des articles</a> &nbsp; | &nbsp;
+          <a href="index.php?action=delete&id=<?= $post['id'] ?>"><i class="fa fa-trash o"></i> Supprimer cet article</a>
         </div>
       </div>
 <?php $content = ob_get_clean(); ?>

@@ -35,8 +35,19 @@ function addComment($postId, $author, $comment)
         throw new Exception('Impossible d\'ajouter le commentaire !');
     }
     else {
-        header('Location: index.php?action=post&id=' . $postId);
+        header('Location: index.php?action=confirm&id=' . $postId);
     }
+}
+
+function confirmComment ()
+{
+    $postManager = new PostManager();
+    $commentManager = new CommentManager();
+
+    $post = $postManager->getPost($_GET['id']);
+    $comments = $commentManager->getComments($_GET['id']);
+    
+    require('view/front/confirmCommentView.php');   
 }
 
 

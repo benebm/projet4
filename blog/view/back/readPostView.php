@@ -1,4 +1,4 @@
-<?php $header = '<a href="index.php">Articles</a> / Article mis à jour'; ?>
+<?php $header = '<a href="index.php?action=readall">Articles</a> / Article mis à jour'; ?>
 
 <?php ob_start(); ?>
       <h1>Voici votre nouvel article</h1>
