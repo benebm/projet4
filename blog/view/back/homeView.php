@@ -1,7 +1,7 @@
 <?php $header = '<a href="index.php">Accueil</a>'; ?>
       
 <?php ob_start(); ?>
-      <h1>Bienvenue, <?= $_SESSION['firstname'];?> !</h1>
+      <h1>Bienvenue, <?= $_SESSION['username'];?> !</h1>
       <hr>
       <!-- Icon Cards-->
       <div class="row">

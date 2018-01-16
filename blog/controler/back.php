@@ -3,22 +3,51 @@
 // Chargement des classes
 require_once('../model/PostManager.php');
 require_once('../model/CommentManager.php');
+require_once('../model/MemberManager.php');
 
+// les fonctions suivantes sont liées à l'identification du membre
+
+function showLogin ()
+{
+    require('../view/back/loginView.php');  
+}
+
+function checkPassword($username)
+{
+    $memberManager = new MemberManager();
+    $result = $memberManager->getPassword(htmlspecialchars($_POST['username'])); // on sécurise les données venant de l'extérieur
+    if (password_verify(htmlspecialchars($_POST['userpassword']), $result['userpassword'])) { // ici aussi
+    $_SESSION['connect']=1;
+    $_SESSION['username'] = $username;
+    showCounts();
+    }
+    else {
+    require('../view/back/accessDeniedView.php');
+    }
+}
+
+function closeAccess ()
+{
+    $_SESSION = array();
+    session_destroy();
+
+    require('../view/back/loginView.php');
+}
+
+// les fonctions suivantes sont liées à toutes les actions qu'on peut faire sur un article
 
 function showAllPosts()
 {
-    $postManager = new PostManager(); // Création d'un objet
-    $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
+    $postManager = new PostManager(); 
+    $posts = $postManager->getPosts(); 
 
     require('../view/back/readAllPostsView.php');
 }
-
 
 function showCreatePostForm ()
 {
 	require('../view/back/createPostView.php');
 }
-
 
 function addPost ($title, $subtitle, $content)
 {
@@ -41,7 +70,6 @@ function showUpdatePostForm ()
 
 	require('../view/back/updatePostView.php');
 }
-
 
 function managePost ($postId, $title, $subtitle, $content)
 {
@@ -79,6 +107,8 @@ function post()
     require('../view/back/readPostView.php');
 }
 
+// les fonctions suivantes sont liées à la modération de commentaires
+
 function showPendingComments ()
 {
     $commentManager = new CommentManager();
@@ -103,13 +133,14 @@ function invalidateComment ($commentId)
 	header('Location: index.php?action=moderate');
 }
 
+// les fonctions suivantes sont des agrégats pour les widgets de la home
+
 function showSumPosts ()
 {
     $postManager = new PostManager(); 
     $sumPosts = $postManager->sumPosts(); 
 
     require('../view/back/homeView.php');
-
 }
 
 function showCounts ()
@@ -118,10 +149,8 @@ function showCounts ()
     $sumPosts = $postManager->sumPosts(); 
     $commentManager = new CommentManager();
     $sumComments = $commentManager->sumPendingComments();
-    $_SESSION['firstname'] = 'Jean';
 
     require('../view/back/homeView.php');
-
 }
 
 

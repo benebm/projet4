@@ -346,6 +346,14 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
   max-width: 250px;
 }
 
+.card-access {
+  max-width: 15rem;
+}
+
+.denied p {
+  color : red;
+}
+
 /*end of my personal touch */
 
 .card-register {

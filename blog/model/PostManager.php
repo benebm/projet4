@@ -1,8 +1,8 @@
 <?php
 
-require_once("Manager.php"); 
+require_once("Manager.php"); // appel à l'objet parent qui gère la connexion BDD
 
-class PostManager extends Manager
+class PostManager extends Manager // modélisation du prototype d'objet 'article'
 {
 
     public function getPosts ()
@@ -11,7 +11,6 @@ class PostManager extends Manager
         $req = $db->query('SELECT id, title, subtitle, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM blog_oc4_posts ORDER BY creation_date DESC');
         return $req;
     }
-
 
     public function getPost ($postId)
     {   
@@ -58,7 +57,6 @@ class PostManager extends Manager
             'postId' => $postId));
     }
 
-
     public function sumPosts ()
     {
         $db = $this->dbConnect();
@@ -66,7 +64,6 @@ class PostManager extends Manager
         $sumPosts = $req->fetch();
         return $sumPosts;   
     }
-
 
 }
 

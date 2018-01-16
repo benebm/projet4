@@ -42,7 +42,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.php">Espace d'administration</a>
+    <a class="navbar-brand" href="../index.php" target="_blank"><i class="fa fa-external-link-square"></i>&nbsp;&nbsp;Voir le blog</a></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -89,8 +89,8 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="../index.php" target="_blank">
-            <i class="fa fa-fw fa-sign-out"></i>Voir le blog</a>
+          <a class="nav-link" href="index.php?action=logout" target="_blank">
+            <i class="fa fa-sign-out"></i> Déconnexion</a>
         </li>
       </ul>
     </div>

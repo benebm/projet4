@@ -4,10 +4,12 @@
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 
+// les fonctions suivantes sont liées à l'affichage des articles
+
 function listPosts()
 {
-    $postManager = new PostManager(); // Création d'un objet
-    $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
+    $postManager = new PostManager(); 
+    $posts = $postManager->getPosts(); 
 
     require('view/front/listPostsView.php');
 }
@@ -24,6 +26,7 @@ function post()
     require('view/front/postView.php');
 }
 
+// les fonctions suivantes sont liées à l'affichage, à l'ajout et au signalement de commentaires
 
 function addComment($postId, $author, $comment)
 {

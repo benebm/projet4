@@ -1,8 +1,8 @@
 <?php
 
-require_once("Manager.php");
+require_once("Manager.php"); // appel à l'objet parent qui gère la connexion BDD
 
-class CommentManager extends Manager
+class CommentManager extends Manager // modélisation du prototype d'objet 'commentaire'
 {
 
     public function getComments ($postId)
@@ -13,7 +13,6 @@ class CommentManager extends Manager
         return $comments;
     }
 
-    
     public function postComment ($postId, $author, $comment)
     {
         $db = $this->dbConnect();
@@ -21,7 +20,6 @@ class CommentManager extends Manager
         $affectedLines = $comments->execute(array($postId, $author, $comment));
         return $affectedLines;
     }
-
 
     public function resetComment ($commentId)
     {
@@ -31,14 +29,12 @@ class CommentManager extends Manager
         'commentId' => $commentId));
     }
 
-
     public function getPendingComments ()
     {
         $db = $this->dbConnect();
         $req = $db->query('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM blog_oc4_comments WHERE comment_status IS NULL ORDER BY comment_date');
         return $req;    
     }
-
 
     public function approveComment($commentId)
     {
