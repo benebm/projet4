@@ -21,12 +21,12 @@
 while ($data = $posts->fetch())
 {?>
           <div class="post-preview">
-            <a href="post.html">
+            <a href="index.php?action=post&id=<?= $data['id'] ?>">
               <h2 class="post-title"><?= $data['title'] ?></h2>
               <h3 class="post-subtitle"><?= $data['subtitle'] ?></h3>
             </a>
             <p class="post-meta">Publié par
-              <a href="#">Jean Forteroche</a>
+              Jean Forteroche
               le <?= $data['creation_date_fr'] ?></p>
           </div>
             <em><a href="index.php?action=post&id=<?= $data['id'] ?>">Lire l'article</a></em>
@@ -35,14 +35,5 @@ while ($data = $posts->fetch())
 }
 $posts->closeCursor();
 ?>
-          <!-- Pager -->
-          <!--<div class="clearfix">
-            <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <hr>-->
 <?php $content = ob_get_clean(); ?>
 <?php require('templateFrontBlog.php'); ?>

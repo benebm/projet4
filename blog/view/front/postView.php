@@ -8,7 +8,7 @@
               <h1><?= $post['title']; ?></h1>
               <h2 class="subheading"><?= $post['subtitle']; ?></h2>
               <span class="meta">Publié par
-                <a href="#">Jean Forteroche</a>
+                Jean Forteroche
                 le <?= $post['creation_date_fr']; ?></span>
             </div>
           </div>

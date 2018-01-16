@@ -36,7 +36,7 @@ try {
             {
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) 
                 {
-                    addComment($_GET['id'], htmlspecialchars($_POST['author']), htmlspecialchars($_POST['comment']); // on sécurise les données venant de l'extérieur
+                    addComment($_GET['id'], htmlspecialchars($_POST['author']), htmlspecialchars($_POST['comment'])); // on sécurise les données venant de l'extérieur
                 }
                 else 
                 {
